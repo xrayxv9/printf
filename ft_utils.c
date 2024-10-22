@@ -11,71 +11,26 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-int	ft_putchar(char c)
+int	ft_putchar(void *c)
 {
-	write(1, &c, 1);
+	char	*ch;
+
+	ch = (char *)c;
+	write(1, &ch[0], 1);
 	return (1);
 }
 
-int	ft_strlen(char *s)
+int	ft_putstr(void *s)
 {
-	int	i;
+	int		i;
+	char	*str;
 
 	i = 0;
-	while (s[i])
+	str = (char *)s;
+	while (str[i])
 	{
-		write(1, &s[i], 1);
+		write(1, &str[i], 1);
 		i++;
 	}
 	return (i);
 }
-
-int ft_putnbr_base_low(int num)
-{
-	char *base = "0123456789abcdef"; 
-	if (num == -2147483648)
-	{
-		ft_strlen("-7FFFFFFF");
-		return (9);
-	}
-	if (num < 0)
-	{
-		ft_putchar('-');
-		return(1 + ft_putnbr_base_low(num * -1));
-	}
-	else if (num > 15)
-	{
-		return (ft_putnbr_base_low(num / 16) + ft_putnbr_base_low(num % 16));
-	}
-	else
-	{
-		ft_putchar(base[num]);
-		return (1);
-	}
-}
-
-int ft_putnbr_base_maj(int num)
-{
-	char *base = "0123456789ABCDEF"; 
-	if (num == -2147483648)
-	{
-		ft_strlen("-7FFFFFFF");
-		return (9);
-	}
-	if (num < 0)
-	{
-		ft_putchar('-');
-		return(1 + ft_putnbr_base_maj(num * -1));
-	}
-	else if (num > 15)
-	{
-		return (ft_putnbr_base_maj(num / 16) + ft_putnbr_base_maj(num % 16));
-	}
-	else
-	{
-		ft_putchar(base[num]);
-		return (1);
-	}
-}
-
-

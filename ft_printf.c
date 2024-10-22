@@ -49,5 +49,6 @@ int ft_printf(const char *s, ...)
 		i++;
 	}
 	va_end(chain);
+	free(dico);
 	return (len);
 }

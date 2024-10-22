@@ -20,11 +20,19 @@
 typedef struct s_dict
 {
 	char key;
-	void (*	value)(void *);
+	int (* value)(void *);
 }	t_dico;
 
 t_dico	*create(void);
 
 void	*find(t_dico *dict, char c);
+
+int		ft_hexUp(void *num);
+
+int		ft_hexLow(void *num);
+
+int		ft_putstr(void *s);
+
+int		ft_putchar(void *c);
 
 #endif

@@ -11,14 +11,12 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-
-
-static t_dico nodeMaker(char c, void (*fct)(void *))
+static t_dico nodeMaker(char c, int (*fct)(void *))
 {
 	t_dico node;
 	
 	node.key = c;
-	node.value = fct;
+	node.value = *fct;
 	return (node);
 }
 
@@ -34,10 +32,12 @@ void	*find(t_dico *dict, char c)
 
 
 t_dico *create(void)
-{
-	t_dico dict[10];
+{																																											
+	t_dico *dict;
+
+	dict = malloc(10 * sizeof(t_dico));
 	dict[9] = nodeMaker('\0', NULL);
-	dict[0] = nodeMaker('c', ft_putchar);
+	dict[0] = nodeMaker('c', &ft_putchar);
 	dict[1] = nodeMaker('s', ft_putstr);
 	dict[2] = nodeMaker('p', ft_pointer);
 	dict[3] = nodeMaker('d', ft_putnbr);
