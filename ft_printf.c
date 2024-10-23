@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 14:55:09 by cmorel            #+#    #+#             */
-/*   Updated: 2024/10/22 17:25:02 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/10/23 10:44:08 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -51,4 +51,9 @@ int ft_printf(const char *s, ...)
 	va_end(chain);
 	free(dico);
 	return (len);
+}
+
+int main()
+{
+	ft_printf("je suis un texte");
 }
