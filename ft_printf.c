@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 14:55:09 by cmorel            #+#    #+#             */
-/*   Updated: 2024/10/23 10:44:08 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/10/23 15:10:35 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -17,7 +17,7 @@ static int ft_check(char c, va_list lst, t_dico *dico)
 	int (*fct)(void *);
 
 	fct = find(dico, c);
-	len += fct(va_arg(lst, void *));
+	len = fct(va_arg(lst, void *));
 	return (len);
 }
 
@@ -31,8 +31,8 @@ int ft_printf(const char *s, ...)
 	dico = create();
 	va_start(chain, s);
 	len = 0;
-	i = -1;
-	while (s[++i])
+	i = 0;
+	while (s[i])
 	{
 		if (s[i] == '%')
 		{
@@ -51,9 +51,4 @@ int ft_printf(const char *s, ...)
 	va_end(chain);
 	free(dico);
 	return (len);
-}
-
-int main()
-{
-	ft_printf("je suis un texte");
 }

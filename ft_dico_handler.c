@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dicoHandler.c                                   :+:      :+:    :+:   */
+/*   ft_dico_handler.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 15:49:40 by cmorel            #+#    #+#             */
-/*   Updated: 2024/10/23 10:23:14 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/10/23 11:31:51 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -42,9 +42,9 @@ t_dico *create(void)
 	dict[2] = nodeMaker('p', ft_pointer);
 	dict[3] = nodeMaker('d', ft_putnbr);
 	dict[4] = nodeMaker('i', ft_putnbr);
-	dict[5] = nodeMaker('u', ft_putunbr);
-	dict[6] = nodeMaker('x', ft_hexlow);
-	dict[7] = nodeMaker('X', ft_hexup);
+	dict[5] = nodeMaker('u', &ft_putunbr);
+	dict[6] = nodeMaker('x', ft_hexLow);
+	dict[7] = nodeMaker('X', ft_hexUp);
 	dict[8] = nodeMaker('%', ft_putchar);
 	return (dict);
 }

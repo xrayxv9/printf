@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 17:25:11 by cmorel            #+#    #+#             */
-/*   Updated: 2024/10/23 09:46:22 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/10/23 11:05:55 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -14,9 +14,9 @@
 int	ft_putchar(void *c)
 {
 	char	*ch;
-
+	
 	ch = (char *)c;
-	write(1, &ch[0], 1);
+	write(1, &ch, 1);
 	return (1);
 }
 
