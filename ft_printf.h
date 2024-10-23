@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 14:55:34 by cmorel            #+#    #+#             */
-/*   Updated: 2024/10/22 17:04:14 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/10/23 10:43:05 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef FT_PRINTF_H
@@ -27,9 +27,15 @@ t_dico	*create(void);
 
 void	*find(t_dico *dict, char c);
 
-int		ft_hexUp(void *num);
+int		ft_pointer(void *ptr);
 
-int		ft_hexLow(void *num);
+int		ft_putnbr(void *num);
+
+int		ft_putunbr(void *num);
+
+int		ft_hexup(void *num);
+
+int		ft_hexlow(void *num);
 
 int		ft_putstr(void *s);
 

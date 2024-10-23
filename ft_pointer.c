@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils.c                                         :+:      :+:    :+:   */
+/*   ft_pointer.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 17:25:11 by cmorel            #+#    #+#             */
-/*   Updated: 2024/10/23 09:46:22 by cmorel           ###   ########.fr       */
+/*   Created: 2024/10/23 10:23:42 by cmorel            #+#    #+#             */
+/*   Updated: 2024/10/23 10:42:26 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-int	ft_putchar(void *c)
+
+int	ft_putlnbr(unsigned long long n, char *base)
 {
-	char	*ch;
-
-	ch = (char *)c;
-	write(1, &ch[0], 1);
-	return (1);
-}
-
-int	ft_putstr(void *s)
-{
-	int		i;
-	char	*str;
-
-	i = 0;
-	str = (char *)s;
-	while (str[i])
+	if (n < 16)
 	{
-		write(1, &str[i], 1);
-		i++;
+		ft_putchar(&base[n]);
+		return (1);
 	}
-	return (i);
+	return (ft_putlnbr(n / 16, base) + ft_putlnbr(n % 16, base));
+}
+// (unsigned long long)p == 0
+int	ft_pointer(void *ptr)
+{
+	if (!ptr)
+		return (ft_putstr("(nil)"));
+	else
+		return (ft_putstr("0x") +
+					ft_putlnbr((unsigned long long)ptr, "0123456789abcdef"));
 }
