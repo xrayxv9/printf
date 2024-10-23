@@ -10,42 +10,35 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
-
-int ft_put(unsigned int n)
+#include <stdint.h>
+int ft_put(unsigned int n, char *base)
 {
 	if (n > 9)
 	{
-		ft_put(n / 10);
-		n = n % 10 + '0';
-		printf("n = %u\n", n);
-		ft_putchar(&n);
-		return (1);
+		return (ft_put(n / 10, base) + ft_put(n % 10, base));
 	}
-	else if(n < 10)
+	else 
 	{
-		n = n % 10 + '0';
-		ft_putchar(&n);
+		n = n % 10;
+		write(1, &base[n], 1);
 		return (1);
 	}
-	return (0);
-
-
 }
 
 int ft_putnbr(void *num)
 {
-	size_t			i;
+	intptr_t			i;
 	int				len;
 	unsigned int 	n;
-
-	i = (size_t)num;
+	
+	i = (size_t)(num);
 	if (i < 0)
 	{
 		write(1, "-", 1);
-		i *= -1;
+		i = -i;
 	}
 	n = (unsigned int)i;
-	len = ft_put(n);
+	len = ft_put(n, "0123456789");
 	return (len);
 
 }
@@ -53,14 +46,16 @@ int ft_putnbr(void *num)
 int	ft_putunbr(void *num)
 {
 	unsigned int	n;
-	int				*i;
+	size_t			i;
+	size_t			zero;
 	int				len;
 
-	i = (int *)num;
-	if (i < 0)
-		n = (unsigned int) (*i * -1);
+	zero = 0;
+	i = (size_t)num;
+	if (i < zero)
+		n = (unsigned int) (i * -1);
 	else 
-		n = (unsigned int)*i;
-	len = ft_put(n);
+		n = (unsigned int)i;
+	len = ft_put(n, "0123456789");
 	return (len);
 }
