@@ -6,28 +6,30 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 09:46:35 by cmorel            #+#    #+#             */
-/*   Updated: 2024/10/23 16:39:28 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/10/23 16:58:45 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
 int ft_put(unsigned int n)
 {
-	unsigned int	divided;
-	unsigned int	remains;
-	printf("%d\n", n);
-
-	if (n < 10)
+	if (n > 9)
 	{
-		n += '0';
+		ft_put(n / 10);
+		n = n % 10 + '0';
+		printf("n = %u\n", n);
 		ft_putchar(&n);
 		return (1);
 	}
-	divided = n / 10;
-	remains = n % 10;
-	ft_put(divided);
-	ft_putchar(&remains+'0');
+	else if(n < 10)
+	{
+		n = n % 10 + '0';
+		ft_putchar(&n);
+		return (1);
+	}
 	return (0);
+
+
 }
 
 int ft_putnbr(void *num)
