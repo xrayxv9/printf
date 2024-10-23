@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 09:46:35 by cmorel            #+#    #+#             */
-/*   Updated: 2024/10/23 16:38:00 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/10/23 16:39:28 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -14,7 +14,8 @@
 int ft_put(unsigned int n)
 {
 	unsigned int	divided;
-	unsigned int	moduled;
+	unsigned int	remains;
+	printf("%d\n", n);
 
 	if (n < 10)
 	{
@@ -23,9 +24,9 @@ int ft_put(unsigned int n)
 		return (1);
 	}
 	divided = n / 10;
-	moduled = n % 10;
+	remains = n % 10;
 	ft_put(divided);
-	ft_putchar(&moduled+'0');
+	ft_putchar(&remains+'0');
 	return (0);
 }
 
