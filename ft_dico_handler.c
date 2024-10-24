@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 15:49:40 by cmorel            #+#    #+#             */
-/*   Updated: 2024/10/24 15:29:36 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/10/24 17:08:05 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -42,7 +42,7 @@ t_dico	*create(void)
 	dict[3] = node_maker('d', ft_putnbr);
 	dict[4] = node_maker('i', ft_putnbr);
 	dict[5] = node_maker('u', &ft_putunbr);
-	dict[6] = node_maker('x', ft_hexLow);
-	dict[7] = node_maker('X', ft_hexUp);
+	dict[6] = node_maker('x', ft_hex_low);
+	dict[7] = node_maker('X', ft_hex_up);
 	return (dict);
 }

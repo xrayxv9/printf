@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 14:55:34 by cmorel            #+#    #+#             */
-/*   Updated: 2024/10/24 17:06:37 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/10/24 17:07:48 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef FT_PRINTF_H
@@ -33,9 +33,9 @@ int		ft_putnbr(void *num);
 
 int		ft_putunbr(void *num);
 
-int		ft_hexUp(void *num);
+int		ft_hex_up(void *num);
 
-int		ft_hexLow(void *num);
+int		ft_hex_low(void *num);
 
 int		ft_putstr(void *s);
 
