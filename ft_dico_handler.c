@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 15:49:40 by cmorel            #+#    #+#             */
-/*   Updated: 2024/10/23 11:31:51 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/10/24 11:58:59 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -35,8 +35,8 @@ t_dico *create(void)
 {																																											
 	t_dico *dict;
 
-	dict = malloc(10 * sizeof(t_dico));
-	dict[9] = nodeMaker('\0', NULL);
+	dict = malloc(9 * sizeof(t_dico));
+	dict[8] = nodeMaker('\0', NULL);
 	dict[0] = nodeMaker('c', ft_putchar);
 	dict[1] = nodeMaker('s', ft_putstr);
 	dict[2] = nodeMaker('p', ft_pointer);
@@ -45,6 +45,5 @@ t_dico *create(void)
 	dict[5] = nodeMaker('u', &ft_putunbr);
 	dict[6] = nodeMaker('x', ft_hexLow);
 	dict[7] = nodeMaker('X', ft_hexUp);
-	dict[8] = nodeMaker('%', ft_putchar);
 	return (dict);
 }

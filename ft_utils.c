@@ -6,16 +6,16 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 17:25:11 by cmorel            #+#    #+#             */
-/*   Updated: 2024/10/23 11:05:55 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/10/24 11:36:31 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
 int	ft_putchar(void *c)
 {
-	char	*ch;
+	char	ch;
 	
-	ch = (char *)c;
+	ch = *((char *)c);
 	write(1, &ch, 1);
 	return (1);
 }
@@ -26,7 +26,12 @@ int	ft_putstr(void *s)
 	char	*str;
 
 	i = 0;
-	str = (char *)s;
+	str = *((char **)s);
+	if (!str)
+	{
+		write(1, "(null)", 6);
+		return (6);
+	}
 	while (str[i])
 	{
 		write(1, &str[i], 1);

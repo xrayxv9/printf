@@ -3,11 +3,11 @@
 
 int main()
 {
-	int c = -22222;
+	char *c = NULL;
 	int len;
 	int	len2;
 
-	len = ft_printf("f : %d\n", c);
-	len2 = printf("p : %d\n", c);
+	len = ft_printf("f : % p\n", c);
+	len2 = printf("p : % p\n", c);
 	printf("len1 = %d, len 2 = %d", len, len2);
 }

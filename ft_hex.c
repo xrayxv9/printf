@@ -11,19 +11,9 @@
 // ************************************************************************** //
 #include "ft_printf.h"
 
-int	gen_hex(char *base, int num)
+int	gen_hex(char *base, unsigned int num)
 {
-	if (num == -2147483648)
-	{
-		ft_putstr("-7FFFFFFF");
-		return (9);
-	}
-	if (num < 0)
-	{
-		ft_putchar("-");
-		return(1 + gen_hex(base, num * -1));
-	}
-	else if (num > 15)
+	if (num > 15)
 	{
 		return (gen_hex(base, num / 16) + gen_hex(base, num % 16));
 	}
@@ -36,18 +26,28 @@ int	gen_hex(char *base, int num)
 
 int ft_hexLow(void *i)
 {
-	int		*num;
+	unsigned int	num;
+	unsigned int	n;
 
-	num = (int *)i;
+	num = *((unsigned int *)i);
+	if (num < 0)
+		n = (unsigned int)-num;
+	else
+		n = (unsigned int) num;
 	char *base = "0123456789abcdef"; 
-	return (gen_hex(base, *num));
+	return (gen_hex(base, n));
 }
 
 int ft_hexUp(void *i)
 {
-	int		*num;
+	unsigned int	num;
+	unsigned int	n;
 
-	num = (int *)i;
+	num = *((unsigned int *)i);
+	if (num < 0)
+		n = (unsigned int)-num;
+	else
+		n = (unsigned int)-num;
 	char *base = "0123456789ABCDEF"; 
-	return (gen_hex(base, *num));
+	return (gen_hex(base, num));
 }

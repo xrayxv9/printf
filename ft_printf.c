@@ -6,47 +6,64 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 14:55:09 by cmorel            #+#    #+#             */
-/*   Updated: 2024/10/23 15:10:35 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/10/24 12:12:08 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
+// int --> void * (int) --> void * (int *) --> int * --> int
 static int ft_check(char c, va_list lst, t_dico *dico)
 {
 	int	len;
 	int (*fct)(void *);
+	void *tmp;
 
 	fct = find(dico, c);
-	len = fct(va_arg(lst, void *));
+	if (fct)
+	{
+		tmp = va_arg(lst, void *);
+		len = fct(&tmp);
+	}
+	else
+		len = 0;
 	return (len);
+}
+
+int	error_handling(int error, t_list dico, va_list chain)
+{
+	va_end(chain);
+
 }
 
 int ft_printf(const char *s, ...)
 {
 	va_list	chain;
 	int		len;
-	int		i;
 	t_dico	*dico;
+	int		check;
 
 	dico = create();
 	va_start(chain, s);
 	len = 0;
-	i = 0;
-	while (s[i])
+	while (*s)
 	{
-		if (s[i] == '%')
+		if (*s == '%')
 		{
-			i++;
-			while (s[i] == ' ')
-				i++;
-			len += ft_check(s[i], chain, dico);
+			s++;
+			if (*s == '%')
+				check = write(1, "%", 1);
+			else
+				check = ft_check(*s, chain, dico);
+			if (!check)
+				error(1);
 		}
 		else
 		{
 			len++;
-			write(1, &s[i], 1);
+			write(1, s, 1);
 		}
-		i++;
+		s++;
+		len += check;
 	}
 	va_end(chain);
 	free(dico);
