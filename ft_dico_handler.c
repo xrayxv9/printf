@@ -6,15 +6,15 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 15:49:40 by cmorel            #+#    #+#             */
-/*   Updated: 2024/10/24 11:58:59 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/10/24 15:29:36 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-static t_dico nodeMaker(char c, int (*fct)(void *))
+static t_dico	node_maker(char c, int (*fct)(void *))
 {
-	t_dico node;
-	
+	t_dico	node;
+
 	node.key = c;
 	node.value = *fct;
 	return (node);
@@ -30,20 +30,19 @@ void	*find(t_dico *dict, char c)
 	return (dict[i].value);
 }
 
-
-t_dico *create(void)
-{																																											
-	t_dico *dict;
+t_dico	*create(void)
+{
+	t_dico	*dict;
 
 	dict = malloc(9 * sizeof(t_dico));
-	dict[8] = nodeMaker('\0', NULL);
-	dict[0] = nodeMaker('c', ft_putchar);
-	dict[1] = nodeMaker('s', ft_putstr);
-	dict[2] = nodeMaker('p', ft_pointer);
-	dict[3] = nodeMaker('d', ft_putnbr);
-	dict[4] = nodeMaker('i', ft_putnbr);
-	dict[5] = nodeMaker('u', &ft_putunbr);
-	dict[6] = nodeMaker('x', ft_hexLow);
-	dict[7] = nodeMaker('X', ft_hexUp);
+	dict[8] = node_maker('\0', NULL);
+	dict[0] = node_maker('c', ft_putchar);
+	dict[1] = node_maker('s', ft_putstr);
+	dict[2] = node_maker('p', ft_pointer);
+	dict[3] = node_maker('d', ft_putnbr);
+	dict[4] = node_maker('i', ft_putnbr);
+	dict[5] = node_maker('u', &ft_putunbr);
+	dict[6] = node_maker('x', ft_hexLow);
+	dict[7] = node_maker('X', ft_hexUp);
 	return (dict);
 }

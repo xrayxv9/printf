@@ -1,14 +1,14 @@
-// ************************************************************************** //
-//                                                                            //
-//                                                        :::      ::::::::   //
-//   ft_hex.c                                           :+:      :+:    :+:   //
-//                                                    +:+ +:+         +:+     //
-//   By: xray <xray@42angouleme.fr>                 +#+  +:+       +#+        //
-//                                                +#+#+#+#+#+   +#+           //
-//   Created: 2024/10/23 00:20:34 by xray              #+#    #+#             //
-//   Updated: 2024/10/23 00:36:47 by xray             ###   ########.fr       //
-//                                                                            //
-// ************************************************************************** //
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_hex.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/24 15:18:52 by cmorel            #+#    #+#             */
+/*   Updated: 2024/10/24 15:21:29 by cmorel           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "ft_printf.h"
 
 int	gen_hex(char *base, unsigned int num)
@@ -24,30 +24,32 @@ int	gen_hex(char *base, unsigned int num)
 	}
 }
 
-int ft_hexLow(void *i)
+int	ft_hex_low(void *i)
 {
 	unsigned int	num;
 	unsigned int	n;
+	char			*base;
 
+	base = "0123456789abcdef";
 	num = *((unsigned int *)i);
 	if (num < 0)
 		n = (unsigned int)-num;
 	else
-		n = (unsigned int) num;
-	char *base = "0123456789abcdef"; 
+		n = (unsigned int)num;
 	return (gen_hex(base, n));
 }
 
-int ft_hexUp(void *i)
+int	ft_hex_up(void *i)
 {
 	unsigned int	num;
 	unsigned int	n;
+	char			*base;
 
+	base = "0123456789ABCDEF";
 	num = *((unsigned int *)i);
 	if (num < 0)
 		n = (unsigned int)-num;
 	else
 		n = (unsigned int)-num;
-	char *base = "0123456789ABCDEF"; 
 	return (gen_hex(base, num));
 }

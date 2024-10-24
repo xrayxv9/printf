@@ -6,19 +6,18 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 09:46:35 by cmorel            #+#    #+#             */
-/*   Updated: 2024/10/24 10:52:36 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/10/24 15:18:13 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
-#include <stdint.h>
 
-int ft_put(unsigned int n, char *base)
+int	ft_put(unsigned int n, char *base)
 {
 	if (n > 9)
 	{
 		return (ft_put(n / 10, base) + ft_put(n % 10, base));
 	}
-	else 
+	else
 	{
 		n = n % 10;
 		write(1, &base[n], 1);
@@ -26,7 +25,7 @@ int ft_put(unsigned int n, char *base)
 	}
 }
 
-int ft_putnbr(void *num)
+int	ft_putnbr(void *num)
 {
 	int				i;
 	int				len;
@@ -43,7 +42,6 @@ int ft_putnbr(void *num)
 	n = (unsigned int)i;
 	len += ft_put(i, "0123456789");
 	return (len);
-
 }
 
 int	ft_putunbr(void *num)
@@ -54,8 +52,8 @@ int	ft_putunbr(void *num)
 
 	i = *((unsigned int *)num);
 	if (i < 0)
-		n = (unsigned int) (i * -1);
-	else 
+		n = (unsigned int)(i * -1);
+	else
 		n = (unsigned int)i;
 	len = ft_put(n, "0123456789");
 	return (len);

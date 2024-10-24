@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 14:55:34 by cmorel            #+#    #+#             */
-/*   Updated: 2024/10/24 11:06:57 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/10/24 17:06:37 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef FT_PRINTF_H
@@ -19,9 +19,9 @@
 
 typedef struct s_dict
 {
-	char key;
-	int (* value)(void *);
-}	t_dico;
+	char	key;
+	int		(*value)(void *);
+}			t_dico;
 
 t_dico	*create(void);
 

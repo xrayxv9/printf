@@ -6,11 +6,10 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 10:23:42 by cmorel            #+#    #+#             */
-/*   Updated: 2024/10/24 11:27:20 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/10/24 15:24:11 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
-
 
 int	ft_putlnbr(size_t n, char *base)
 {
@@ -18,17 +17,17 @@ int	ft_putlnbr(size_t n, char *base)
 	{
 		return (ft_putlnbr(n / 16, base) + ft_putlnbr(n % 16, base));
 	}
-	else 
+	else
 	{
 		write(1, &base[n], 1);
 		return (1);
 	}
-	
 }
+
 // (unsigned long long)p == 0
 int	ft_pointer(void *ptr)
 {
-	size_t p;
+	size_t	p;
 
 	p = *((size_t *)ptr);
 	if (p == 0)
@@ -37,7 +36,7 @@ int	ft_pointer(void *ptr)
 	}
 	else
 	{
-		return (write(1, "0x", 2) +
-					ft_putlnbr(p, "0123456789abcdef"));
+		return (write(1, "0x", 2)
+			+ ft_putlnbr(p, "0123456789abcdef"));
 	}
 }
