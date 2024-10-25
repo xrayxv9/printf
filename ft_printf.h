@@ -6,13 +6,12 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 14:55:34 by cmorel            #+#    #+#             */
-/*   Updated: 2024/10/24 17:07:48 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/10/25 09:57:12 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdarg.h>
@@ -21,11 +20,11 @@ typedef struct s_dict
 {
 	char	key;
 	int		(*value)(void *);
-}			t_dico;
+}			t_dict;
 
-t_dico	*create(void);
+t_dict	*create(void);
 
-void	*find(t_dico *dict, char c);
+void	*find(t_dict *dict, char c);
 
 int		ft_pointer(void *ptr);
 

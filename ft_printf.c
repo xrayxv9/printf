@@ -6,7 +6,7 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 14:55:09 by cmorel            #+#    #+#             */
-/*   Updated: 2024/10/24 15:17:16 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/10/25 09:56:30 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -36,10 +36,10 @@ static int	ft_check(char c, va_list chain)
 	int		len;
 	int		(*fct)(void *);
 	void	*tmp;
-	t_dico	*dico;
+	t_dict	*dict;
 
-	dico = create();
-	fct = find(dico, c);
+	dict = create();
+	fct = find(dict, c);
 	len = -1;
 	if (fct)
 	{
@@ -48,7 +48,7 @@ static int	ft_check(char c, va_list chain)
 	}
 	else
 		error_handling(1, chain);
-	free(dico);
+	free(dict);
 	return (len);
 }
 

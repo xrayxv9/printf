@@ -6,21 +6,21 @@
 /*   By: cmorel <cmorel@42angouleme.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 15:49:40 by cmorel            #+#    #+#             */
-/*   Updated: 2024/10/24 17:13:06 by cmorel           ###   ########.fr       */
+/*   Updated: 2024/10/25 09:51:06 by cmorel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-static t_dico	node_maker(char c, int (*fct)(void *))
+static t_dict	node_maker(char c, int (*fct)(void *))
 {
-	t_dico	node;
+	t_dict	node;
 
 	node.key = c;
 	node.value = *fct;
 	return (node);
 }
 
-void	*find(t_dico *dict, char c)
+void	*find(t_dict *dict, char c)
 {
 	int	i;
 
@@ -30,11 +30,11 @@ void	*find(t_dico *dict, char c)
 	return (dict[i].value);
 }
 
-t_dico	*create(void)
+t_dict	*create(void)
 {
-	t_dico	*dict;
+	t_dict	*dict;
 
-	dict = malloc(9 * sizeof(t_dico));
+	dict = malloc(9 * sizeof(t_dict));
 	dict[8] = node_maker('\0', NULL);
 	dict[0] = node_maker('c', ft_putchar);
 	dict[1] = node_maker('s', ft_putstr);
